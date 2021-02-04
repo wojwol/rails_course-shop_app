@@ -1,6 +1,6 @@
 module Admin
   class ProductsController < Admin::BaseController
-    before_action :set_product, only: %i[ show edit update destroy ]
+    before_action :set_product, only: [ :show, :edit, :update, :destroy ]
 
     # GET /products or /products.json
     def index
@@ -28,7 +28,7 @@ module Admin
         if @product.save
           format.html { redirect_to @product, notice: "Product was successfully created." }
         else
-          format.html { render :new, status: :unprocessable_entity }
+          format.html { render :new }
         end
       end
     end
@@ -39,7 +39,7 @@ module Admin
         if @product.update(product_params)
           format.html { redirect_to @product, notice: "Product was successfully updated." }
         else
-          format.html { render :edit, status: :unprocessable_entity }
+          format.html { render :edit }
         end
       end
     end
@@ -48,7 +48,7 @@ module Admin
     def destroy
       @product.destroy
       respond_to do |format|
-        format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
+        format.html { redirect_to admin_products_url, notice: "Product was successfully destroyed." }
       end
     end
 
