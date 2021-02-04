@@ -13,6 +13,5 @@ RSpec.describe "products/new", type: :view do
     expect(rendered).to match /name/
     expect(rendered).to match /quantity/
     expect(rendered).to match /price/
-    end
   end
 end
