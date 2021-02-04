@@ -1,54 +1,62 @@
 <main class="container">
   
-  <div class="hero is-small is-light">
-    <header class="hero-body">
+  <header class="hero is-small is-dark">
+    <div class="hero-body">
       <h1 class="title is-1">Products</h1>
       <h3 class="subtitle is-3">Add, remove, edit or browse your products</h3>
-    </header>
-  </div>
+    </div>
+  </header>
+  <br>
+  <article class="container has-text-centered notification">
+    <div class="container">
+
+      <% @products.each_slice(3) do |slice| %>
+        <section class="columns is-centered">
+
+          <% slice.each do |product| %>
+            <div class="column is-3">
+              <div class="card">
+
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img src="https://png2.cleanpng.com/sh/2dda7916378acdc9f272ab29571edfd2/L0KzQYi4UsE4N2lpfZGAYUO6QonrVvE4aWQ3TZCDOUK2SIG3VcE2OWQ6TqY8N0S5SIeATwBvbz==/5a3728d6a7a325.8923800515135643746867.png" alt="Placeholder image">
+                    </figure>
+                  </div>
+
+                <div class="card-content">
+                  <p class="title">
+                    <%= product.name %>
+                  </p>
+                  <p class="subtitle">
+                    <%= product.price %> PLN
+                  </p>
+                  <p class="has-text-weight-semibold has-text-right">
+                    <%= product.quantity.to_i %> in stock.
+                  </p>
+                </div>
+
+                <footer class="card-footer">
+                  <p class="card-footer-item">
+                    <span> <%= link_to 'Show Details', products_path %> </span>
+                  </p>
+                  <p class="card-footer-item">
+                    <span> <a href="#">Add</a> to a cart </span>
+                  </p>
+                </footer>
+
+              </div>
+            </div>
+          <% end %>
+
+        </section>
+      <% end %>
+
+    </div>
+  </article>
 
   <article class="container">
     <p id="notice"><%= notice %></p>
-    <section class="notification">
-      <table class="table is-narrow is-hoverable is-fullwidth">
-        <thead>
-          <th>ID</th>
-          <th>Name</th> 
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Actions</th>
-        </thead>
-
-        <tbody>
-          <% @products.each do |product| %>
-            <tr>
-              <td><%= product.id %></td>
-              <td><%= product.name %></td>
-              <td><%= product.price %></td>
-              <td><%= product.quantity %></td>
-              <td>
-                <section class="buttons are-small">
-                  <button class="button is-info"><%= link_to 'Show', product %></button>
-                  <button class="button is-warning"><%= link_to 'Edit', edit_product_path(product) %></button>
-                  <button class="button is-danger"><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-                </section>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-
-        <tfoot>
-          <th>ID</th>
-          <th>Name</th> 
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Actions</th>
-        </tfoot>
-      </table>
-      <button class="button is-big is-success">
-        <%= link_to 'Add New Product', new_product_path %>
-      </button>
-    </section>
+     
   </article>
 
 </main>
