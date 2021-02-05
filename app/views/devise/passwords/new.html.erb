@@ -1,16 +1,39 @@
-<h2>Forgot your password?</h2>
+<main class="hero is-fullheight is-fullwidth is-light">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-2">
+      <figure class="image">
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/4223"/>
+      </figure>
+      <h1 class="title is-4">Forgot your password?</h1>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="field">
+          <div class="control">
+            <%= f.email_field :email, class: "input is-rounded", autofocus: false, autocomplete: "email", placeholder: "email", required: true%>
+          </div>
+        </div>
+
+        <button class="button is-rounded is-danger is-fullwidth is-big is-block" type="submit">
+          Send me reset password instructions
+        </button>
+
+      <% end %>
+
+      <h2 class="title is-4">or...</h2>
+      <div class="buttons">
+        <button class="button is-small is-success is-fullwidth is-block is-rounded">
+          <%= link_to("log in",  new_user_session_path) %>
+        </button>
+
+        <button class="button is-small is-info is-fullwidth is-block is-rounded">
+          <%= link_to("create an account",  new_user_registration_path) %>
+        </button>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+</main>
 
-<%= render "devise/shared/links" %>

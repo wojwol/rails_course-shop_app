@@ -10,13 +10,13 @@
 
         <div class="field">
           <div class="control">
-            <%= f.email_field :email, class: "input is-rounded",autofocus: false, autocomplete: "email", placeholder: "email" %>
+            <%= f.email_field :email, class: "input is-rounded",autofocus: false, autocomplete: "email", placeholder: "email", required: true %>
           </div>
         </div>
 
         <div class="field is-rounded">
           <div class="control">
-            <%= f.password_field :password, class: "input is-rounded", autocomplete: "current-password", placeholder: "password" %>
+            <%= f.password_field :password, class: "input is-rounded", autocomplete: "current-password", placeholder: "password", required: true %>
           </div>
         </div>
 
