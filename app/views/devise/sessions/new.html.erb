@@ -1,26 +1,46 @@
-<h2>Log in</h2>
+<main class="hero is-fullheight is-fullwidth is-light">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-2">
+      <figure class="image">
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/4223"/>
+      </figure>
+      <h1 class="title is-1">Log In</h1>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="field">
+          <div class="control">
+            <%= f.email_field :email, class: "input is-rounded",autofocus: false, autocomplete: "email", placeholder: "email" %>
+          </div>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="field is-rounded">
+          <div class="control">
+            <%= f.password_field :password, class: "input is-rounded", autocomplete: "current-password", placeholder: "password" %>
+          </div>
+        </div>
+
+        <button class="button is-rounded is-danger is-fullwidth is-big is-block" type="submit">
+          Log In
+          <i class="fas fa-sig-in-alt"></i>
+          <%# f.submit "Log in" %>
+        </button>
+
+      <% end %>
+
+      <h2 class="title is-2">or...</h2>
+      <div class="buttons">
+        <button class="button is-small is-link is-fullwidth is-block is-rounded">
+          <%= link_to("forgot password?",  new_user_password_path) %>
+        </button>
+
+        <button class="button is-small is-info is-fullwidth is-block is-rounded">
+          <%= link_to("create an account",  new_user_registration_path) %>
+        </button>
+      </div>
+
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+</main>
