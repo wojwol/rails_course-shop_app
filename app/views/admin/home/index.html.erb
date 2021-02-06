@@ -1,48 +1,54 @@
-<section class="hero has-background-danger-dark  is-small">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <p class="title has-text-light  ">
-        Products
-      </p>
-      <p class="subtitle has-text-light ">
-        Here is what we offer
-      </p>
-    </div>
+<main class="container">
+  
+  <div class="hero is-small is-link">
+    <header class="hero-body">
+      <h1 class="title is-1">Products</h1>
+      <h3 class="subtitle is-3">Add, remove, edit or browse your products</h3>
+    </header>
   </div>
-</section>
-<div class="box cta">
-  <p class="has-text-centered">
-    Click on selected product to see more details
-  </p>
-</div>
-<section class="container">
-  <% @products.each_slice(3) do |batch| %>
-    <div class="columns features">
-    <% batch.each do |product| %>
-      <div class="column is-4">
-        <div class="card is-shady">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="https://fuzati.com/wp-content/uploads/2016/12/Ruby-Logo.png" alt="Placeholder image" class="modal-button" data-target="modal-image2">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              <h5><%= product.name %></h5>
-              <h6><%= product.price %></h6>
-              <div>
-                In stock: <span class="is-size-6 has-text-weight-semibold "><%= product.quantity %></span>
-              </div>
-              <span class="button is-link">
-                <%= link_to(product) do %>
-                  <span class="has-text-white is-size-6 has-text-weight-semibold">Details</span>
-                <% end %>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <% end %>
-</section>
+
+  <article class="container">
+    <p id="notice"><%= notice %></p>
+    <section class="notification">
+      <table class="table is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <th>ID</th>
+          <th>Name</th> 
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </thead>
+
+        <tbody>
+          <% @products.each do |product| %>
+            <tr>
+              <td><%= product.id %></td>
+              <td><%= product.name %></td>
+              <td><%= product.price %></td>
+              <td><%= product.quantity %></td>
+              <td>
+                <section class="buttons are-small">
+                  <button class="button is-info"><%= link_to 'Show', product %></button>
+                  <button class="button is-warning"><%= link_to 'Edit', edit_admin_product_path(product) %></button>
+                  <button class="button is-danger"><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                </section>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+
+        <tfoot>
+          <th>ID</th>
+          <th>Name</th> 
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tfoot>
+      </table>
+      <button class="button is-big is-success">
+        <%= link_to 'Add New Product', new_admin_product_path %>
+      </button>
+    </section>
+  </article>
+
+</main>
