@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class BaseController < ApplicationController
     class AuthorizationError < StandardError; end
@@ -14,7 +16,7 @@ module Admin
     def authorize_admin!
       return if current_user.present? && current_user.admin
 
-      raise AuthorizationError, "You are not permitted to access this page or it does not exist"
+      raise AuthorizationError, 'You are not permitted to access this page or it does not exist'
     end
   end
 end

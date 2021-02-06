@@ -1,28 +1,29 @@
 <main class="container">
-  
   <header class="hero is-small is-dark">
     <div class="hero-body">
-      <h1 class="title is-1">Products</h1>
-      <h3 class="subtitle is-3">Add, remove, edit or browse your products</h3>
+      <div class="container has-text-centered">
+        <h1 class="title is-1">Products</h1>
+        <h3 class="subtitle is-3">Here is what we offer</h3>
+      </div>
     </div>
   </header>
-  <br>
+  <div class="box cta">
+    <p class="has-text-centered">
+      Click on selected product to see more details
+    </p>
+  </div>
   <article class="container has-text-centered notification">
     <div class="container">
-
       <% @products.each_slice(3) do |slice| %>
         <section class="columns is-centered">
-
           <% slice.each do |product| %>
             <div class="column is-3">
               <div class="card">
-
                   <div class="card-image">
                     <figure class="image is-4by3">
                       <img src="https://png2.cleanpng.com/sh/2dda7916378acdc9f272ab29571edfd2/L0KzQYi4UsE4N2lpfZGAYUO6QonrVvE4aWQ3TZCDOUK2SIG3VcE2OWQ6TqY8N0S5SIeATwBvbz==/5a3728d6a7a325.8923800515135643746867.png" alt="Placeholder image">
                     </figure>
                   </div>
-
                 <div class="card-content">
                   <p class="title">
                     <%= product.name %>
@@ -34,7 +35,6 @@
                     <%= product.quantity.to_i %> in stock.
                   </p>
                 </div>
-
                 <footer class="card-footer">
                   <p class="card-footer-item">
                     <span> <%= link_to 'Show Details', product %> </span>
@@ -43,20 +43,14 @@
                     <span> <a href="#">Add</a> to a cart </span>
                   </p>
                 </footer>
-
               </div>
             </div>
           <% end %>
-
         </section>
       <% end %>
-
     </div>
   </article>
-
   <article class="container">
     <p id="notice"><%= notice %></p>
-     
   </article>
-
 </main>
